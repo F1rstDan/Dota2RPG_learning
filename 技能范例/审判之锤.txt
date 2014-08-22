@@ -1,0 +1,164 @@
+﻿	//=================================================================================================================
+	//测试技能，小范围击晕，大范围伤害减速。
+	//=================================================================================================================
+		"testT"
+	{
+		"ID"		"10008"
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"//可对地板放，也可对目标放
+		//"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE "
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"//目标类型：英雄，基础
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS"//目标标示？非远古
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	//伤害类型，魔法
+		"AbilityTextureName"			"axe_battle_hunger"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"//施法动作
+
+		"AbilityCastPoint"				"0.2"
+		"AbilityCastRange"				"75"
+		"AbilityCooldown"				"4 3 2 1 "
+		"AbilityManaCost"				"1 2 3 4"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"Damage"		"75 150 225 300"//伤害值
+			}
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"MinRadius"		"150"//对小范围内单位造成眩晕
+			}
+			"03"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"MaxRadius"		"300"//对大范围内单位造成伤害
+			}
+			"04"
+			{
+				"var_type"		"FIELD_FLOAT"
+				"Stun_Radius"	"0.75 1.00 1.25 1.50"//眩晕时间
+			}
+			"05"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"Slow_duration"	"3.0 3.7 4.4 5.0"//减速时间
+			}
+		}
+
+		"precache" //预载
+		{
+			"particle_folder"			"particles/units/heroes/hero_brewmaster"//预载特效文件夹
+			"particle_folder"			"particles/units/heroes/hero_omniknight"//预载特效文件夹
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_brewmaster.vsndevts"//预载声音文件
+		}
+
+
+		"OnSpellStart"
+		{
+			"FireSound"//声音
+			{
+				"EffectName"		"Hero_Brewmaster.ThunderClap"
+				"Target"			"CASTER"
+			}
+			//"FireEffect"//无用
+			//{
+				//"EffectName"			"particles/units/heroes/hero_batrider/batrider_flamebreak_explosion.vpcf"
+			//	"EffectName"			"particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
+			//	"Target"		"POINT"
+			//}
+			//"AttachEffect"//无用
+			//{
+			//	"EffectName"		"particles/econ/generic/generic_aoe_shockwave_1/generic_aoe_shockwave_1.vpcf"
+			//	"EffectAttachType"	"world_origin"
+			//	"Target"			"POINT"
+			//	"ControlPoints"
+			//	{
+			//		"00" "0 0 0"
+			//		"01" "600 0 0"
+			//		"02" "5 0 .8" // telegraph
+			//		"03" "150 150 150"
+			//		"04" "0 0 0"
+			//	}
+			//}
+
+			"FireEffect"
+			{
+				"TargetPoint"		"POINT"//目标点：点
+				"EffectName"		"particles/units/heroes/hero_brewmaster/brewmaster_thunder_clap.vpcf"//特效名称
+				"EffectAttachType"	"world_origin"//附着点类型：世界坐标
+				"EffectRadius"		"300"//范围
+				"EffectDurationScale" "1"//时间长度？
+				"EffectLifeDurationScale" "1"//存活时间，没用
+				"EffectColorA"		"25 50 200"//颜色
+				"EffectColorB"		"25 50 200"//颜色
+			}
+
+			"Damage"//对大范围内单位造成伤害
+			{
+				"Type"		"DAMAGE_TYPE_MAGICAL"
+				"Damage"	"%Damage" //和AbilitySpecial里定义的RangeDamage上对应数值挂钩。
+				"Target"
+				{
+					"Center"	"POINT"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Radius"	"%MaxRadius"
+				}
+			}
+			"Stun"//对小范围内单位造成眩晕
+			{
+				"Duration"	"%Stun_Radius"//持续时间
+				"Target"
+				{
+					"Center"	"POINT"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Radius"	"%MinRadius"
+				}
+			}
+
+			"ApplyModifier"//为大范围造成减速
+			{
+				"Target"
+				{
+					"Center"	"POINT"
+					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Radius"	"%MaxRadius"
+				}
+				"ModifierName" "testT_Modifiers"
+			}
+			"ApplyModifier"//添加动作
+			{
+				"Target"
+				{
+					"Center"	"POINT"
+					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Radius"	"%MaxRadius"
+				}
+				"ModifierName" "testT_act"
+			}
+		}
+
+
+		"Modifiers"
+		{
+			"testT_Modifiers"//为造成减速
+			{
+				"Duration" "%Slow_duration"//持续时间
+				"EffectName" "particles/units/heroes/hero_omniknight/omniknight_repel_buff_h.vpcf"//减速特效
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "-25"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "-25"
+				}
+			}
+			"testT_act"//强制动作
+			{
+				"IsHiddem"	"1"
+				"Passive"	"1"
+				"Duration"	"0.1"
+				"OverrideAnimation"	"ACT_DOTA_FLAIL"
+			}
+		}
+	}
