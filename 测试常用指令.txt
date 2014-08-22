@@ -1,0 +1,51 @@
+dota_launch_custom_game [地图插件名] [地形名]
+===进入自定义地图
+dota_launch_custom_game cloudforged cloudforged
+dota_launch_custom_game test untitled_1
+
+jointeam good
+jointeam bad
+===将玩家分配到天辉方夜魇方
+
+dota_create_unit axe enemy
+dota_create_unit axe
+===创建敌方斧王，友方斧王
+
+dota_dev hero_teleport
+===传送到当前英雄到鼠标点击位置。
+
+script_reload
+===重启脚本
+
+sv_cheats 1
+===作弊命令
+
+dota_camera_distance 1134
+===设置视角高度
+
+dota_ability_debug 1
+===技能没有冷却时间，这对敌方也会生效！
+
+dota_dev hero_level 25
+-lvlup 25
+===提高英雄等级
+
+dota_bot_give_level [N]
+===提高全部电脑玩家等级N级。
+
+dota_dev hero_refresh
+-refresh
+===重置英雄技能冷却并布满状态
+
+dota_dev player_givegold
+-gold 99999
+===重置英雄技能冷却并布满状态
+
+dota_dev hero_respawn
+-respawn
+===在泉水处复活英雄
+
+-allvision
+===全图模式
+-normalvision
+===关闭全图
