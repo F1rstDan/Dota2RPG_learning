@@ -30,8 +30,17 @@ dota_dev hero_level 25
 -lvlup 25
 ===提高英雄等级
 
+dota_create_item 物品名称
+-item 物品名称
+===给与玩家特定的物品
+
 dota_bot_give_level [N]
+-levelbots
 ===提高全部电脑玩家等级N级。
+
+dota_bot_give_item 物品名称
+-givebots 物品名称
+===给予所有机器人一件物品
 
 dota_dev hero_refresh
 -refresh
