@@ -10,6 +10,7 @@ Dota2学习记录
 | <a name="index"/>目录
 | ------------
 | [Sublime Text 补全插件](#SublimeText)
+| [关于技能](#关于技能)
 | [关于UI的范例](#UI)
 
 Sublime Text 补全插件 <a name="SublimeText"/>
@@ -20,12 +21,21 @@ Sublime Text 补全插件 <a name="SublimeText"/>
 
 [`↑TOP`](#index)
 
+关于技能
+------------------------
+* [技能 modifier 的参数范例](http://hex6.se/dota/modifier_functions.txt)
+
+[`↑TOP`](#index)
+
 关于UI的范例 <a name="UI"/>
 ------------------------
+* [【自定义UI的教程总集】](http://yrrep.me/dota/)  
+[- 汉化教程](http://www.dota2rpg.com/forum.php?mod=viewthread&tid=1250&fromuid=395)
+
 * [Legonds Of Dota的技能选择界面](https://github.com/XavierCHN/LegendsOfDota/tree/master/lod/HudSRC)
 
 * [【教程】自定义错误提示](https://developer.valvesoftware.com/wiki/Dota_2_Workshop_Tools:zh-cn/Custom_UI:zh-cn/Custom_Error_Tutorial:zh-cn)  
-[GitHub源代码](https://github.com/zedor/CustomError/)  
+[- GitHub源代码](https://github.com/zedor/CustomError/)  
 ![](./Pictures/CustomError01.png)
 
 * [法术商店 UI](https://github.com/zedor/SpellShop_UI)  
