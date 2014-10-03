@@ -10,7 +10,7 @@ Dota2学习记录
 | <a name="index"/>目录
 | ------------
 | [Sublime Text 补全插件](#SublimeText)
-| [关于KV文件：技能，单位等](#关于KV文件：技能，单位等)
+| [关于KV文件：技能，单位等](#KV)
 | [关于UI的范例](#UI)
 
 Sublime Text 补全插件 <a name="SublimeText"/>
@@ -21,7 +21,7 @@ Sublime Text 补全插件 <a name="SublimeText"/>
 
 [`↑TOP`](#index)
 
-关于KV文件：技能，单位等
+关于KV文件：技能，单位等 <a name="KV"/>
 ------------------------
 * [KV文件参数(略全)](http://hex6.se/dota/)
 
