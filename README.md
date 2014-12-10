@@ -11,6 +11,7 @@ Dota2学习记录
 | ------------
 | [Sublime Text 补全插件](#SublimeText)
 | [关于KV文件：技能，单位等](#KV)
+| [关于特效](#Particle)
 | [关于UI的范例](#UI)
 
 Sublime Text 补全插件 <a name="SublimeText"/>
@@ -27,6 +28,12 @@ Sublime Text 补全插件 <a name="SublimeText"/>
 
 * [技能 modifier 的参数范例](http://hex6.se/dota/modifier_functions.txt)
 * [单位属性，掉落物品](https://github.com/XavierCHN/newfrosty/blob/master/scripts/npc/npc_units_custom.txt#L4149)
+
+[`↑TOP`](#index)
+
+关于特效 <a name="Particle"/>
+------------------------
+* [浮动伤害数字（伤害，金钱等）](http://www.reddit.com/r/Dota2Modding/comments/2fh49i/floating_damage_numbers_and_damage_block_gold/) [[+备份]](https://github.com/F1rstDan/Dota2RPG_learning/blob/master/%E6%94%B6%E9%9B%86%E7%9A%84%E6%96%87%E4%BB%B6/%E6%B5%AE%E5%8A%A8%E4%BC%A4%E5%AE%B3%E6%95%B0%E5%AD%97%EF%BC%88%E4%BC%A4%E5%AE%B3%EF%BC%8C%E9%87%91%E9%92%B1%E7%AD%89%EF%BC%89.lua)
 
 [`↑TOP`](#index)
 
